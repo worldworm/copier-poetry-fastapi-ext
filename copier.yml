@@ -1,0 +1,22 @@
+_subdirectory: template
+_templates_suffix: .j2
+_answers_file: .copier-answers.poetry-fastapi-ext.yml
+_exclude: []
+_envops:
+    block_start_string: "[%"
+    block_end_string: "%]"
+    comment_start_string: "[#"
+    comment_end_string: "#]"
+    variable_start_string: "[["
+    variable_end_string: "]]"
+
+use_subdir:
+  type: bool
+  help: Use subdir for project files?
+  default: false
+
+subdir_name:
+  type: str
+  help: Subdir name
+  default: "[[ 'backend' if use_subdir else '.' ~ sep ]]"
+  when: "[[ use_subdir ]]"

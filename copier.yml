@@ -10,6 +10,10 @@ _envops:
     variable_start_string: "[["
     variable_end_string: "]]"
 
+template_suffix:
+  type: str
+  help: Template suffix
+
 use_subdir:
   type: bool
   help: Use subdir for project files?

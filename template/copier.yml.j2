@@ -1,10 +1,10 @@
 _subdirectory: template
 _templates_suffix: .jinja
-_answers_file: .copier-answers.poetry.yml
+_answers_file: .copier-answers.[[ "fastapi" if template_suffix == "" else "fastapi-" ~ template_suffix ]].yml
 
 _tasks:
-  - "[ -f README.md ] || touch README.md"
-  - "poetry install"
+  - "[ -f README.md ] || touch [[ subdir_name ~ "/" if use_subdir else "" ]]README.md"
+  - "poetry[[ " --directory " ~ subdir_name if use_subdir else "" ]] install"
   - "[ -d .git ] && poetry run pre-commit install --install-hooks || true"
 
 project_name:

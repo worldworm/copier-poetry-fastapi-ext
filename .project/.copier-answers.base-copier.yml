@@ -1,0 +1,23 @@
+# Changes here will be overwritten by Copier
+_commit: v1.1.0
+_src_path: https://github.com/worldworm/copier-base-copier.git
+answersfile_suffix: poetry-fastapi-ext
+copyright_license: MIT
+copyright_year_start: 2023
+copyright_year_today: 2023
+ext_template_name: copier-poetry-meta
+ext_template_url: https://github.com/worldworm/copier-poetry-meta
+is_bp: false
+is_ext: true
+is_meta: false
+need_trust: false
+project_description: Copier extension template for fastapi projects.
+project_emoji: 📋
+project_name: copier-poetry-fastapi-ext
+ref_tech_url: https://github.com/tiangolo/fastapi
+repository_name: copier-poetry-fastapi-ext
+repository_provider: GitHub
+repository_url: https://github.com/worldworm/copier-poetry-fastapi-ext
+repository_username: worldworm
+warning_early_dev: false
+

@@ -1,4 +1,4 @@
-"""FastAPI response schemas."""
+"""FastAPI response models."""
 from fastapi import status
 from pydantic import BaseModel, Field
 

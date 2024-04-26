@@ -5,3 +5,9 @@ pydantic = {extras = ["email"], version = "^2.4.2"}
 {% if use_versionizer -%}
 fastapi-versionizer = "^2.1.2"
 {% endif -%}
+
+[tool.poe.tasks]
+
+    [tool.poe.tasks.dev]
+    help = "Start the development server"
+    cmd = "uvicorn {{ package_import_name }}.main:app --reload"

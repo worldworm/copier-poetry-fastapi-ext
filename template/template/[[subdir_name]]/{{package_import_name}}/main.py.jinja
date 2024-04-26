@@ -22,9 +22,9 @@ app.include_router(router)
 {% if use_versionizer %}
 app, versions = Versionizer(
     app=app,
-    prefix_format='/v{major}',
-    semantic_version_format='{major}',
-    latest_prefix='/latest',
+    prefix_format="/v{major}",
+    semantic_version_format="{major}",
+    latest_prefix="/latest",
     sort_routes=True
 ).versionize()
 {% endif %}

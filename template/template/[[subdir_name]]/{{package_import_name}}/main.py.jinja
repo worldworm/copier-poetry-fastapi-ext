@@ -20,7 +20,7 @@ app = FastAPI(
 
 app.include_router(router)
 {% if use_versionizer %}
-app, versions = Versionizer(
+versions = Versionizer(
     app=app,
     prefix_format="/v{major}",
     semantic_version_format="{major}",

@@ -14,9 +14,9 @@
 
 
 ## Features
-- Basic [fastapi](https://github.com/tiangolo/fastapi) setup
-- API versioning using [fastapi-versionizer](https://github.com/alexschimpf/fastapi-versionizer)
-- Pre-defined HTTP status code error models
+- 🚀 Basic [fastapi](https://github.com/tiangolo/fastapi) setup
+- 📅 API versioning using [fastapi-versionizer](https://github.com/alexschimpf/fastapi-versionizer)
+- 🚦 Pre-defined HTTP status code error models
 
 ## Requirements
 First install copier:<br>

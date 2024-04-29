@@ -37,7 +37,7 @@ async def healthcheck() -> dict[str, str]:
 
 def main() -> None:
     """Main function."""
-    uvicorn.run(app)
+    uvicorn.run(app, host="0.0.0.0")  # nosec
 
 
 if __name__ == "__main__":

@@ -6,13 +6,14 @@ class Pagination(BaseModel):
     """Pagination class."""
     page: int = Field(description="Current page number (0 indexed).", examples=[0])
     size: int = Field(description="Number of objects per page.", examples=[100])
-    total_count: int = Field(description="Total count of objects.", examples=[200])
+    result_count: int = Field(description="Total count of objects in filtered result set.", examples=[200])
+    total_count: int = Field(description="Total count of objects before filtering.", examples=[200])
 
     @computed_field  # type: ignore[misc]
     @property
     def total_pages(self) -> int:
         """Total number of pages."""
-        return (self.total_count + self.size - 1) // self.size
+        return (self.result_count + self.size - 1) // self.size
 
     @computed_field  # type: ignore[misc]
     @property

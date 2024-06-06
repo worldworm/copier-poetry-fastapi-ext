@@ -1,15 +1,15 @@
 """Module for sorting utilities."""
-from typing import Callable, Optional, Type
+from typing import Callable, Literal, Optional, Type
 
 from fastapi import Query
 from pydantic import BaseModel, ConfigDict
-from sqlalchemy.sql.expression import UnaryExpression, asc, desc
+{% if use_database %}from sqlalchemy.sql.expression import UnaryExpression, asc, desc{% endif %}
 
 
 class SortBy(BaseModel):
     """Model for sorting criteria."""
     field: Optional[str] = None
-    order: Callable[[str], UnaryExpression[str]] = asc
+    order: Literal["asc", "desc"] = "asc"
 
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
@@ -23,13 +23,14 @@ class SortBy(BaseModel):
         """Parse a sort value string into a SortBy object."""
         parts = sort_value.split(":", 1)
         field = parts[0]
-        order = desc if len(parts) >= 2 and parts[1].lower() == "desc" else asc
+        order = "desc" if len(parts) >= 2 and parts[1].lower() == "desc" else "asc"
         return SortBy(field=field, order=order)
-
+{% if use_database %}
     def clause(self) -> Optional[UnaryExpression[str]]:
         """Return the SQL ORDER BY clause."""
-        return self.order(self.field) if self.field else None  # pylint: disable=too-many-function-args
-
+        order_clause = desc if self.order == "desc" else asc
+        return order_clause(self.field) if self.field else None  # pylint: disable=too-many-function-args
+{% endif %}
 
 def parse_sort(model: Type[BaseModel]) -> Callable[[str], SortBy]:
     """Factory function to create a sort parser for the given model."""

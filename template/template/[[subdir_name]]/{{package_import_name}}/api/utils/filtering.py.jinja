@@ -4,7 +4,7 @@ from typing import Annotated, Any, Callable, Type
 
 from fastapi import HTTPException, Query
 from pydantic import BaseModel, StringConstraints
-from sqlalchemy.sql.elements import BinaryExpression
+{% if use_database %}from sqlalchemy.sql.elements import BinaryExpression{% endif %}
 
 
 class FilterBy(BaseModel):
@@ -24,13 +24,13 @@ class FilterBy(BaseModel):
         field = parts[0]
         query = parts[1] or ""
         return FilterBy(field=field, query=query)
-
+{% if use_database %}
     def clause(self, model: Type[BaseModel]) -> BinaryExpression[Any]:
         """Return the SQL WHERE clause."""
         if "%" in self.query:
             return getattr(model, self.field).like(self.query)  # type: ignore
         return getattr(model, self.field) == self.query  # type: ignore
-
+{% endif %}
 
 def parse_filter(model: Type[BaseModel]) -> Callable[[list[str]], list[FilterBy]]:
     """Factory function to create a filter parser for the given model."""

@@ -17,6 +17,8 @@
 - 🚀 Basic [fastapi](https://github.com/tiangolo/fastapi) setup
 - 📅 API versioning using [fastapi-versionizer](https://github.com/alexschimpf/fastapi-versionizer)
 - 🚦 Pre-defined HTTP status code error models
+- 🔍 Sorting and filtering query dependencies
+- 📚 Pagination model with built-in page calculation
 
 ## Requirements
 First install copier:<br>

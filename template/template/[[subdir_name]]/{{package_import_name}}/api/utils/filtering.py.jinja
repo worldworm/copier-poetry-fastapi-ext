@@ -28,7 +28,7 @@ class FilterBy(BaseModel):
     def clause(self, model: Type[BaseModel]) -> BinaryExpression[Any]:
         """Return the SQL WHERE clause."""
         if "%" in self.query:
-            return getattr(model, self.field).like(self.query)  # type: ignore
+            return getattr(model, self.field).ilike(self.query)  # type: ignore
         return getattr(model, self.field) == self.query  # type: ignore
 {% endif %}
 
